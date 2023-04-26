@@ -1,0 +1,26 @@
+{
+    "project": "SpeakLeash",
+    "name": "europeana_eu_pl_corpus",
+    "description": "Collection of Polish documents from europeana.eu corpus",
+    "license": "Public Domain, Creative Commons",
+    "language": "pl",
+    "file_size": 25514774,
+    "sources": [
+        {
+            "name": "europeana_eu_pl_corpus",
+            "url": "https://europeana.eu",
+            "license": "Public Domain, Creative Commons"
+        }
+    ],
+    "stats": {
+        "documents": 64,
+        "sentences": 0,
+        "words": 0,
+        "nouns": 0,
+        "verbs": 0,
+        "characters": 65689115,
+        "punctuations": 0,
+        "symbols": 0,
+        "stopwords": 0
+    }
+}
