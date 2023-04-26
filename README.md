@@ -1,4 +1,4 @@
-# SpeakLeash Becnhmark
+# SpeakLeash Benchmark
 
 SpeakLeash benchmark is a Python script that evaluates the average processing time using SpeakLeash post-processor. The script can be executed using the `main.py` file and supports several command-line arguments to customize its behavior.
 
