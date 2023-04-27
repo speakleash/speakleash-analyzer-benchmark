@@ -31,7 +31,7 @@ The script accepts the following command-line arguments:
 
 - Use this argument to evaluate processing time of 64 large (>1MB) text documents derived from usenet dataset.
 - This argument does not require a value.
-- If this argument is omitted, the script will assume usage of 1024 small documents derived from news_4_business_corpus dataset
+- If this argument is omitted, the script will assume usage of 4096 small documents derived from news_4_business_corpus dataset
 - Example usage: `python main.py --large`
 
 ### `--num_pass`
