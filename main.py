@@ -12,6 +12,10 @@ from rich import print as rich_print
 from common.functions import log
 from multiprocessing import Pool, set_start_method
 from datetime import datetime
+import threading
+
+def pool_dummy():
+    return
 
 def process_doc(doc):
     counter = doc[0]
@@ -26,6 +30,7 @@ def initialize_worker():
 
     global nlp    
     nlp = spacy.load("pl_core_news_md", disable=('ner','textcat','entity_linker'))
+    
 
 
 if __name__ == '__main__':
@@ -86,10 +91,17 @@ if __name__ == '__main__':
 
     rdr = Reader(os.path.join(base_dir, 'Assets' ,target_zst_name + '.jsonl.zst'))            
 
-
+    
 
     with Pool(initializer=initialize_worker, processes=args.processes) as pool:
-      
+
+        #Enforce initializers to start before starting timer
+        log("Initializing", "INFO")
+        dummy_results = [pool.apply_async(pool_dummy) for _ in range(args.processes)]
+        for result in dummy_results:
+            result.get()
+        
+        log("Starting benchmark", "INFO")
         time_start = datetime.now()
         
         for i in range(args.num_pass):
@@ -97,8 +109,11 @@ if __name__ == '__main__':
             stats = {'documents': 0}
         
             ar = Archive(os.path.join(base_dir, "data"))
+
+            
         
-            for txt, meta in pool.imap(func=process_doc, iterable=enumerate(rdr.stream_data(get_meta=True)), chunksize=1):                         
+            for txt, meta in pool.imap(func=process_doc, iterable=enumerate(rdr.stream_data(get_meta=True)), chunksize=1):               
+
                 stats['documents'] += 1                        
                 
                 for key in meta.keys():
@@ -107,15 +122,15 @@ if __name__ == '__main__':
                 ar.add_data(txt, meta = meta)                
 
             
-
-
-            pool.close()
-            pool.join()
-        ar.commit()
-
         d = datetime.now() - time_start
         elapsed = d.total_seconds()/args.num_pass
         log("Average processing time: " + str(elapsed) + " s", "INFO")
+
+        pool.close()
+        pool.join()
+        ar.commit()
+
+        
 
     for key in stats.keys():
         if key in Analyzer.AVG_METRICS_DEF:

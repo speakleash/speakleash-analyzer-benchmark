@@ -1,21 +1,21 @@
 {
     "project": "SpeakLeash",
     "name": "benchmark_sm",
-    "file_size": 2831375,
+    "file_size": 3002719,
     "sources": [
         {
             "name": "benchmark_sm"
         }
     ],
     "stats": {
-        "documents": 2048,
-        "sentences": 57742,
-        "words": 934669,
-        "nouns": 263891,
-        "verbs": 90698,
-        "characters": 6470307,
-        "punctuations": 175132,
-        "symbols": 373,
-        "stopwords": 300577
+        "documents": 4096,
+        "sentences": 112625,
+        "words": 1830428,
+        "nouns": 520461,
+        "verbs": 176865,
+        "characters": 12702935,
+        "punctuations": 341761,
+        "symbols": 686,
+        "stopwords": 588103
     }
 }

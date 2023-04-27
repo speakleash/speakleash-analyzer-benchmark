@@ -1,4 +1,4 @@
-# SpeakLeash Benchmark
+# SpeakLeash Becnhmark
 
 SpeakLeash benchmark is a Python script that evaluates the average processing time using SpeakLeash post-processor. The script can be executed using the `main.py` file and supports several command-line arguments to customize its behavior.
 
@@ -31,7 +31,7 @@ The script accepts the following command-line arguments:
 
 - Use this argument to evaluate processing time of 64 large (>1MB) text documents derived from usenet dataset.
 - This argument does not require a value.
-- If this argument is omitted, the script will assume usage of 2048 small documents derived from news_4_business_corpus dataset
+- If this argument is omitted, the script will assume usage of 1024 small documents derived from news_4_business_corpus dataset
 - Example usage: `python main.py --large`
 
 ### `--num_pass`
